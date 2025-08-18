@@ -1,0 +1,82 @@
+<div class="container my-4">
+  <div class="p-5 bg-light">
+    <!-- Title -->
+    <h3 class="fw-bold">Welcome to our movie app</h3>
+    <p class="text-muted">
+      Millions of movies, TV shows and people to discover. Explore now.
+    </p>
+
+    <!-- Search form -->
+    <form class="d-flex mt-4" (ngSubmit)="onSearch()">
+      <input
+        class="form-control form-control-lg me-2"
+        type="search"
+        placeholder="Search and explore...."
+        [(ngModel)]="searchTerm"
+        name="search"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-lg"
+        type="submit"
+        style="background-color: #ffe347; color: black; font-weight: 500;"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Movies Grid -->
+<div class="row g-3 container-fluid">
+  <div class="col-md-3" *ngFor="let movie of filteredMovies">
+    <div class="card movie-card shadow-sm">
+      <!-- Poster -->
+      <div class="position-relative">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+          class="card-img-top rounded-top"
+          alt="{{ movie.title || movie.name }}"
+        />
+
+        <!-- Rating Circle -->
+        <div class="score-circle">
+          <svg class="progress-circle" viewBox="0 0 36 36">
+            <path
+              class="circle-bg"
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+            <path
+              class="circle"
+              [attr.stroke-dasharray]="(movie.vote_average * 10) + ', 100'"
+              d="M18 2.0845
+                 a 15.9155 15.9155 0 0 1 0 31.831
+                 a 15.9155 15.9155 0 0 1 0 -31.831"
+            />
+          </svg>
+          <div class="circle-text">
+            {{ movie.vote_average * 10 | number: '1.0-0' }}%
+          </div>
+        </div>
+
+        <!-- Options button -->
+        <div class="options-btn">⋮</div>
+      </div>
+
+      <!-- Card Body -->
+      <div class="card-body text-center">
+        <h6 class="fw-bold mb-1">{{ movie.title || movie.name }}</h6>
+        <p class="text-muted mb-2">
+          {{ movie.release_date || movie.first_air_date }}
+        </p>
+
+        <!-- Watchlist Heart -->
+        <span class="heart" (click)="movie.liked = !movie.liked">
+          <i [class]="movie.liked ? 'bi bi-heart-fill text-danger' : 'bi bi-heart'"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
