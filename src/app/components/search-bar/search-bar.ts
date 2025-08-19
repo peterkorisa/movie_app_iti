@@ -71,21 +71,15 @@ export class SearchBar {
   }
 
 
-  
+searchedQuery: string = '';   // <-- new variable
 
-onQueryChange(): void {
-  // Clear previous search timeout
-  if (this.searchTimeout) {
-    clearTimeout(this.searchTimeout);
+onSubmit(): void {
+  if (this.query && this.query.trim().length > 0) {
+    this.searchedQuery = this.query;   // lock in the searched term
+    this.searchMovies();
+    this.hasSearched = true;
   }
-
-  // Debounced search with 800ms delay
-  this.searchTimeout = setTimeout(() => {
-    if (this.query.trim().length > 2) {
-      this.searchMovies();
-    } else if (this.query.trim().length === 0) {
-      this.loadNowPlaying();
-    }
-  }, 800);
 }
+
+
 }
