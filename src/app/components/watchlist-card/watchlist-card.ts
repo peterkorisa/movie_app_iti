@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';   // ✅ add this
-import { FormsModule } from '@angular/forms'; // ✅ add this for ngModel
+import { Component, NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';   
 import { Watchlistservice } from '../../services/watchlistservice';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-watchlist-card',
-  imports: [CommonModule],
+  imports: [RouterLink,DatePipe],
   templateUrl: './watchlist-card.html',
   styleUrl: './watchlist-card.css'
 })

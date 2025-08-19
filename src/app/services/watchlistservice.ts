@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class Watchlistservice {
-    private watchlist: any[] = [];
+
+  private watchlist: any[] = [];
   
   getWatchlist() {
     return this.watchlist;

@@ -1,5 +1,5 @@
+import { DatePipe, DecimalPipe, NgClass, PercentPipe } from '@angular/common'; 
 import { Component, Input } from '@angular/core';
-import { DatePipe, DecimalPipe } from '@angular/common'; 
 import { FormsModule } from '@angular/forms';
 import { Watchlistservice } from '../../services/watchlistservice';
 import { RouterLink } from '@angular/router';
@@ -7,8 +7,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
-  standalone: true,
-  imports: [ DecimalPipe ,FormsModule,DatePipe,RouterLink],
+  imports: [NgClass ,DecimalPipe ,FormsModule,DatePipe,RouterLink],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css'
 })
