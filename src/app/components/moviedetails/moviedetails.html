@@ -1,0 +1,74 @@
+<div class="container mt-4">
+  @if (movie) {
+  <div class="row">
+    <!-- Poster -->
+    <div class="col-md-4">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="img-fluid rounded shadow"alt="{{ movie.title }}"/>
+    </div>
+ 
+    <!-- Details -->
+    <div class="col-md-8">
+      <h2>{{ movie.title }}</h2>
+      <p class="text-muted">{{ movie.release_date | date }}</p>
+
+      <!-- Rating -->
+      <div class="mb-2">
+        <span class="text-warning">
+          @for (star of stars; track $index) {
+          <i class="bi" [ngClass]=" star ? 'bi-star-fill text-warning' : 'bi-star text-secondary'"></i>
+          }
+        </span>
+        <span class="ms-2">{{ movie.vote_count }}</span>
+      </div>
+
+      <!-- Overview -->
+      <p>{{ movie.overview }}</p>
+
+      <!-- Genres -->
+      <div class="mb-3">
+        @for (genre of movie.genres; track genre.id) {
+        <span class="badge bg-warning text-dark me-2">{{ genre.name }}</span>
+        }
+      </div>
+
+      <!-- Extra info -->
+      <!-- <p><b>Duration:</b> {{ movie.runtime }} Min.</p>
+      <p><b>Languages:</b> {{ movie.original_language | uppercase }}</p> -->
+      <div class="d-flex gap-3 mt-2 mb-2">
+      <!-- Duration -->
+      <span><strong>Duration:</strong> {{ movie.runtime }} min</span>
+
+      <!-- Languages -->
+      <span><strong>Languages:</strong> {{ movie.original_language | uppercase }}</span>
+    </div>
+
+      <!-- Website -->
+      @if (movie.homepage) {
+      <a [href]="movie.homepage" target="_blank" class="btn btn-outline-dark"> Website</a>
+      }
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <hr class="hr" />
+    <h4>Recommendations</h4>
+    <div class="row g-3 mt-3">
+      @for (rec of recommendations; track rec.id; let i = $index) { @if (i < 6)
+      {
+      <div class="col-6 col-md-4 col-lg-2">
+        <div class="card rec-card h-100 shadow-sm">
+          <a [routerLink]="['/movie', rec.id]" class="link-dark link-underline-opacity-0">
+            <img [src]="'https://image.tmdb.org/t/p/w300' + rec.poster_path" class="card-img-top" alt="{{ rec.title }}"/>
+            <div class="card-body p-2">
+              <h6 class="card-title mb-0 text-truncate">{{ rec.title }}</h6>
+              <small class="text-muted">{{ rec.release_date | date }}</small>
+            </div>
+          </a>
+        </div>
+      </div>
+      } 
+    }
+    </div>
+  </div>
+  }
+</div>

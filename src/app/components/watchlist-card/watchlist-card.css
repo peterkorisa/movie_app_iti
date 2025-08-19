@@ -1,0 +1,48 @@
+   .card-custom {
+      border-radius: 1rem;
+      box-shadow: 0 4px 9px rgba(0,0,0,0.12);
+    }
+    .card-img-custom {
+      border-radius: 1.25rem;
+      width: 6rem;
+      height: 9rem;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .heart-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    /* Outline heart */
+    .bi-heart {
+      color: #555;
+    }
+    /* Filled heart */
+    .bi-heart-fill {
+      color: #f9d71c;
+    }
+    .star-icon {
+      color: #000;
+      font-size: 1rem;
+      margin-right: 2px;
+    }
+    .star-icon.filled {
+      color: #f9d71c;
+    }
+    .rating-number {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #5a5a5a;
+      user-select: none;
+    }
+    .date-text {
+      font-size: 0.85rem;
+      color: #7a7a7a;
+      user-select: none;
+    }
+    .card-body-text {
+      font-size: 0.9rem;
+      color: #4a4a4a;
+    }
