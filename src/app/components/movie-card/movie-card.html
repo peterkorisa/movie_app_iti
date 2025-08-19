@@ -49,13 +49,9 @@
       <p class="text-muted mb-2">
         {{ movie.release_date | date }}
         <!-- Watchlist Heart -->
-        <!-- <span class="heart ms-5"  (click)="toggleWatchlist(movie)">
+        <span class="heart ms-5"  (click)="toggleWatchlist(movie)">
         <i class="bi" [ngClass]="isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
-        </span> -->
-            <!-- add to watchlist -->
-            <button class="btn btn-link ms-2" (click)="toggleWatchlist(movie)">
-              <i class="bi" [ngClass]="isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
-            </button>
-          </p>
+        </span>
+      </p>
   </div>
 </div>

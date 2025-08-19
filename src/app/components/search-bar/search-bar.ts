@@ -71,7 +71,7 @@ export class SearchBar {
   }
 
 
-searchedQuery: string = '';   // <-- new variable
+searchedQuery: string = '';  
 
 onSubmit(): void {
   if (this.query && this.query.trim().length > 0) {
