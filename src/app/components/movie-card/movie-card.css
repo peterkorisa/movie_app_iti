@@ -1,5 +1,5 @@
 .position-relative {
-  padding-bottom: 30px; /* space for the circle to hang */
+  padding-bottom: 30px;
 }
 
 .score-circle {
@@ -37,12 +37,19 @@
   }
   
   .circle-text {
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: bold;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color:white;
+  }
+
+  sup{
+    font-size: 0.3em;
+    vertical-align: super; 
+    position: relative; 
+    top: -0.5em;
   }
   

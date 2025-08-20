@@ -3,35 +3,28 @@
   <a [routerLink]="['/movie', movie.id]" class="link-dark link-underline-opacity-0">
     <div class="position-relative">
       <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top rounded-top" alt="{{ movie.title }}"/>
-
       <!-- Rating Circle -->
       <div class="score-circle">
         <svg class="progress-circle" viewBox="0 0 36 36">
           <path class="circle-bg" [ngStyle]="movie.vote_average > 7 ? {'stroke': '#21cd78'}:{'stroke': '#b5b82c'}" 
-          d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831"/>
           <path class="circle" [ngStyle]="movie.vote_average > 7 ? {'stroke': '#21cd78'}:{'stroke': '#b5b82c'}"
-          [attr.stroke-dasharray]="movie.vote_average * 10 + ', 100'"
-            d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                [attr.stroke-dasharray]="movie.vote_average * 10 + ', 100'"
+                d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831"/>
         </svg>
-        <div class="circle-text">{{ movie.vote_average * 10 | number : "1.0-0" }}%</div>
+        <div class="circle-text">{{ movie.vote_average * 10 | number : "1.0-0" }}<sup>%</sup></div>
       </div>
-
-      <!-- Options button -->
-      <!-- <div class="options-btn">⋮</div> -->
-    </div>
-  </a>
-
-  <!-- Card Body -->
-  <div class="card-body">
-    <a [routerLink]="['/movie', movie.id]" class="link-dark link-underline-opacity-0">
+    </div>    
+    <!-- Card Body -->
+    <div class="card-body">
       <h6 class="fw-bold mb-1 text-truncate">{{ movie.title }}</h6>
-    </a>
       <p class="text-muted mb-2">
         {{ movie.release_date | date }}
         <!-- Watchlist Heart -->
-        <span class="heart ms-5"  (click)="toggleWatchlist(movie)">
-            <i class="bi" [ngClass]="isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
+        <span class="heart ms-5"  (click)="toggleWatchlist(movie); $event.stopPropagation(); $event.preventDefault()">
+          <i class="bi" [ngClass]="isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
         </span>
       </p>
-  </div>
+    </div>
+  </a>
 </div>

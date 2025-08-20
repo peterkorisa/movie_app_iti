@@ -13,10 +13,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './movie-card.css'
 })
 export class MovieCard  {
-   @Input() movie: any;
+  @Input() movie: any;
   
-  imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-
   constructor(private watchlistService: Watchlistservice) {}
   
   toggleWatchlist(movie: any) {
