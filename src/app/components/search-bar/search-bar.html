@@ -1,50 +1,21 @@
 <div class="container my-4">
   <!-- Search form -->
   <form class="d-flex mt-4" (ngSubmit)="onSubmit()">
-    <input
-      class="form-control form-control-lg me-2"
-      [(ngModel)]="query"
-      type="search"
-      placeholder="Search and explore...."
-      aria-label="Search"
-      name="search"
-      [disabled]="isLoading"
-    />
-    <button
-      class="btn btn-lg"
-      type="submit"
-      style="background-color: #ffe347; color: black; font-weight: 500"
-      [disabled]="!query || query.trim().length === 0 || isLoading"
-    >
-      Search
-    </button>
+    <input class="form-control form-control-lg me-2"  [(ngModel)]="query" type="search" placeholder="Search and explore...."name="search"/>
+    <button class="btn btn-lg" type="submit" [disabled]="!query || query.trim().length === 0">Search</button>
   </form>
 </div>
 
 <div class="container mt-4">
   <!-- Results Header -->
   <div class="d-flex justify-content-between align-items-center mb-4">
-    @if (query && hasSearched) {
-    <h4>
-      Search results for "<span class="text-warning">{{ searchedQuery }}</span
-      >" @if (!isLoading && movies.length > 0) {
-      <small class="text-muted ms-2">({{ movies.length }} results)</small>
-      }
-    </h4>
-    } @if (hasSearched) {
-    <a class="btn btn-sm btn-outline-secondary" routerLink="/movielist">
-      <i class="bi bi-arrow-left me-1"></i>Back to Home
-    </a>
-    }
+    <h4>Search results for :<span class="text-warning">{{ searchedQuery }}</span></h4>
   </div>
-
-  @if (!isLoading) {
   <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 mt-3">
     @for (movie of movies; track movie.id) {
-    <div class="col">
-      <app-movie-card [movie]="movie"></app-movie-card>
-    </div>
+      <div class="col">
+          <app-movie-card [movie]="movie"></app-movie-card>
+      </div>
     }
   </div>
-  }
 </div>

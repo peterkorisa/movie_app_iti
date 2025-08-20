@@ -1,16 +1,17 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from '../../services/movie';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { DatePipe, NgClass, UpperCasePipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { DatePipe, NgClass,UpperCasePipe } from '@angular/common';
+import { Watchlistservice } from '../../services/watchlistservice';
+import { MovieCard } from "../movie-card/movie-card";
 
 @Component({
   selector: 'app-moviedetails',
-  imports: [DatePipe,NgClass,UpperCasePipe,RouterLink],
+  imports: [DatePipe, NgClass, UpperCasePipe,MovieCard],
   templateUrl: './moviedetails.html',
   styleUrl: './moviedetails.css'
 })
 export class Moviedetails {
-  
   movie: any;
   recommendations: any[] = [];
   stars: boolean[] = [];
@@ -18,7 +19,8 @@ export class Moviedetails {
   
   constructor(
     private route: ActivatedRoute,
-    private movieService: Movie
+    private movieService: Movie,
+    public watchlistService: Watchlistservice 
   ) {}
   
   ngOnInit(): void {
@@ -35,10 +37,12 @@ export class Moviedetails {
       this.movie = data;
       const rating = Math.round(this.movie.vote_average / 2);
       this.stars = Array(5).fill(false).map((_, i) => i < rating);
+      this.watchlistService.updateMovie(this.movie);
     });
 
     this.movieService.getRecommendations(id).subscribe((data:any) => {
       this.recommendations = data.results; 
     });
   }
+
 }

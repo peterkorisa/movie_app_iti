@@ -1,25 +1,21 @@
-import { Component, NgModule } from '@angular/core';
-import { DatePipe } from '@angular/common';   
+import { Component } from '@angular/core';
+import { DatePipe, NgClass } from '@angular/common';   
 import { Watchlistservice } from '../../services/watchlistservice';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-watchlist-card',
-  imports: [RouterLink,DatePipe],
+  imports: [RouterLink,DatePipe,NgClass],
   templateUrl: './watchlist-card.html',
   styleUrl: './watchlist-card.css'
 })
 export class WatchlistCard {
   
-  imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
-  
-  constructor(private watchlistService: Watchlistservice) {}
+  constructor(public watchlistService: Watchlistservice) {}
 
-  get watchlist() {
-    return this.watchlistService.getWatchlist();
+  getStars(vote_average: number): boolean[] {
+    const rating = Math.round(vote_average / 2);
+    return Array(5).fill(false).map((_, i) => i < rating);
   }
 
-  removeMovie(id: number) {
-    this.watchlistService.removeMovie(id);
-  }
 }
