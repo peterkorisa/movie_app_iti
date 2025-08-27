@@ -21,8 +21,8 @@ export class MovieCard implements OnInit {
   filteredMovies: any[] = [];
   searchTerm: string = '';
 
-  private apiUrl =
-    'https://api.themoviedb.org/3/discover/movie?api_key=43a36acaf39ddefff867563e1123df7c&include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc';
+  private apiUrl = "http://localhost:3000/"
+    // 'https://api.themoviedb.org/3/discover/movie?api_key=43a36acaf39ddefff867563e1123df7c&include_adult=false&include_video=false&language=tl&sort_by=popularity.desc&page=1';
 
   constructor(private http: HttpClient) {}
 
@@ -37,10 +37,22 @@ export class MovieCard implements OnInit {
     });
   }
 
+  // onSearch(): void {
+  //   const term = this.searchTerm.toLowerCase();
+  //   this.filteredMovies = this.movies.filter((movie) =>
+  //     (movie.title || movie.name).toLowerCase().includes(term)
+  //   );
+  // }
   onSearch(): void {
-    const term = this.searchTerm.toLowerCase();
-    this.filteredMovies = this.movies.filter((movie) =>
-      (movie.title || movie.name).toLowerCase().includes(term)
-    );
+    const term = this.searchTerm.trim();
+    if (!term) {
+      this.filteredMovies = [...this.movies];
+      return;
+    }
+    this.http.get<any>(`${this.apiUrl}search/${encodeURIComponent(term)}`)
+      .subscribe((response) => {
+        this.filteredMovies = response.results || [];
+      });
   }
+
 }
