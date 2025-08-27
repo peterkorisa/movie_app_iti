@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 
 // Routes
-app.use("/search/movie", searchRouter); // baseURL/search/movie/{name}?page={pageNumber}
+app.use("/movie/search", searchRouter); // baseURL/movie/search/{name}?page={pageNumber}
 app.use("/movie", movieDetailsRouter); // baseURL/movie/{id}
 // app.use("/watchlist", watchlistRouter); // baseURL/watchlist
 app.use("/", mainRouter);  // baseURL  OR  baseURL/page/{number}
