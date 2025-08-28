@@ -1,25 +1,28 @@
-<div class="container my-4">
-  <div class="p-5 bg-light">
+<div class="container my-4 px-4">
+  <div class="p-5 bg-light search-form">
     <!-- Title -->
     <h3 class="fw-bold">Welcome to our movie app</h3>
     <p class="text-muted">Millions of movies, TV shows and people to discover. Explore now.</p>
 
     <!-- Search form -->
-    <form class="d-flex mt-4" >
-      <input class="form-control form-control-lg me-2" type="search" placeholder="Search and explore...."
-              [(ngModel)]="query"name="search"/>
-      <button class="btn btn-lg" type="submit" 
-      [routerLink]="['/search', query]">
+    <form class="d-flex mt-4">
+      <input class="form-control form-control-lg me-2" 
+             type="search" 
+             placeholder="Search and explore...."
+             [(ngModel)]="query" 
+             name="search" />
+      <button class="btn btn-lg" 
+              type="submit" 
+              [routerLink]="['/search', query]">
         Search
       </button>
     </form>
   </div>
 </div>
 
-
 <!-- Now Playing Movies Section -->
-<div class="container mt-4">
-  <h4>Now Playing</h4>
+<div class="container mt-4 px-4">
+  <h2 class="pt-4 pb-4 m-0">Now Playing</h2>
   <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 mt-3">
     <!-- Loop through movies and render each inside a movie card -->
     @for (movie of movies; track movie.id) {

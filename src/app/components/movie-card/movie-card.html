@@ -16,12 +16,13 @@
     </div>    
     <!-- Card Body -->
     <div class="card-body">
-      <h6 class="fw-bold mb-1 text-truncate">{{ movie.title }}</h6>
-      <p class="text-muted mb-2">
+      <h6 class="fw-bold mb-1 text-truncate lead">{{ movie.title }}</h6>
+      <p class="text-muted mb-2 d-flex flex-row justify-content-between">
+
         {{ movie.release_date | date }}
         <!-- Watchlist Heart -->
-        <span class="heart ms-5"  (click)="watchlistService.toggleWatchlist(movie); $event.stopPropagation(); $event.preventDefault()">
-          <i class="bi" [ngClass]="watchlistService.isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
+        <span class="heart"  (click)="watchlistService.toggleWatchlist(movie); $event.stopPropagation(); $event.preventDefault()">
+          <i class="bi h4" [ngClass]="watchlistService.isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
         </span>
       </p>
     </div>
