@@ -11,6 +11,7 @@ import { FormsModule, NgModel } from '@angular/forms';
   styleUrl: './movielist.css',
 })
 export class Movielist {
+  total_pages: number = 1;
   page_number: string = "1";
   movies: any[] = [];
   query = '';
@@ -26,9 +27,9 @@ export class Movielist {
       this.page_number = id || "1";
     });
 
-    console.log(this.page_number);
     this.movieService.getNowPlaying(this.page_number).subscribe((res: any) => {
       this.movies = res.results;
+      this.total_pages = res.results.total_pages;
     });
   }
 }

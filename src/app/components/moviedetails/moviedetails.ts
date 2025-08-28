@@ -41,8 +41,7 @@ export class Moviedetails {
     });
 
     this.movieService.getRecommendations(id).subscribe((data:any) => {
-      this.recommendations = data.recommendations.results; 
-      console.log(this.recommendations);
+      this.recommendations = data.recommendations.results;
     });
   }
 
