@@ -1,24 +1,56 @@
-<nav class="navbar navbar-expand-lg" style="background-color: #ffe347;">
-  <div class="container-fluid d-flex justify-content-between" style="padding-left: 50px;">
+<nav class="navbar navbar-expand-lg" style="background-color: #ffe347">
+  <div
+    class="container-fluid d-flex justify-content-between"
+    style="padding-left: 50px"
+  >
     <!-- Left: Logo -->
     <a class="navbar-brand fw-bold text-dark" href="#">Movie App</a>
     <div class="d-flex align-items-center">
-        <div class="dropdown me-3">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-            En
-          </a>
-          <ul class="dropdown-menu">
-              <li><a class="dropdown-item">En</a></li>
-              <li><a class="dropdown-item">Ar</a></li>
-          </ul>
-        </div>
-    <!-- Right: Watchlist -->
-        <div style="padding-right: 50px;">
-          <a routerLink="/watchlist" class="nav-link d-flex align-items-center text-dark fw-bold">
-            <span style="font-size: 1.5rem; margin-right: 6px;">🖤</span> watchlist
-          </a>
-        </div>
+      <div class="dropdown me-3">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+        >
+          En
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item">En</a></li>
+          <li><a class="dropdown-item">Ar</a></li>
+        </ul>
+      </div>
+      <!-- Right: Watchlist -->
+      <div style="padding-right: 50px; position: relative">
+        <a
+          routerLink="/watchlist"
+          class="nav-link d-flex align-items-center text-dark fw-bold"
+        >
+          <span
+            style="font-size: 1.5rem; margin-right: 6px; position: relative"
+          >
+            🖤
+            <!-- Badge -->
+            <span
+              class="badge bg-danger rounded-circle"
+              style="
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                font-size: 0.75rem;
+                width: 18px;
+                height: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              {{ watchlistService.getWatchlist().length }}
+            </span>
+          </span>
+          watchlist
+        </a>
+      </div>
     </div>
   </div>
 </nav>
-  
