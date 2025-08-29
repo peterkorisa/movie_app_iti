@@ -3,3 +3,28 @@ button{
     color: black; 
     font-weight: 500; 
 }
+::ng-deep .custom-pagination .page-item .page-link {
+  border: none !important;
+  background-color: transparent !important;
+  color: black !important;
+}
+
+::ng-deep .custom-pagination .page-item.active .page-link {
+  background-color: #ffe347 !important;
+  color: black !important;
+  border: none !important;
+}
+
+::ng-deep .custom-pagination .page-item .page-link:hover {
+  background-color: rgba(255, 227, 71, 0.2) !important;
+}
+
+::ng-deep .custom-pagination .page-item {
+  margin: 0 5px; 
+}
+
+::ng-deep .custom-pagination .page-item:first-child .page-link,
+::ng-deep .custom-pagination .page-item:last-child .page-link {
+  font-size:large;
+  font-weight: bold;
+}

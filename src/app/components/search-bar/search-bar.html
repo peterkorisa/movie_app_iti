@@ -18,4 +18,25 @@
       </div>
     }
   </div>
+     <!-- Pagination -->
+    @if(page && totalPages > 0) {
+    <div class="d-flex justify-content-center mt-4">
+        <pagination 
+          [totalItems]="totalPages * pageSize"
+          [(ngModel)]="page"
+          [itemsPerPage]="pageSize"
+          (pageChanged)="onPageChange($event.page)"
+          [maxSize]="5"
+          [rotate]="false"
+          [boundaryLinks]="false"
+          previousText="&lsaquo;" 
+          nextText="&rsaquo;" 
+          firstText="&laquo;" 
+          lastText="&raquo;" 
+          class="custom-pagination"
+          aria-label="Movie pagination">
+        </pagination>
+
+  </div>
+  }
 </div>
