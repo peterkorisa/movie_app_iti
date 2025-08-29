@@ -13,11 +13,12 @@ export class Watchlistservice {
   // Reactive watchlist state
   private _watchlist = new BehaviorSubject<any[]>([]);
   watchlist$ = this._watchlist.asObservable();
-  
-  
+
   constructor(
     private http: HttpClient
-  ){}
+  ){
+    this.getWatchlist();
+  }
 
   getWatchlist() {
     
