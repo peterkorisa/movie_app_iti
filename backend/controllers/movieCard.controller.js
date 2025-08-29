@@ -21,7 +21,7 @@ const movieCard = async (req, res) => {
     };
 
     // Send response
-    res.status(200).json(details);
+    res.status(200).json(result);
   } catch (error) {
     console.error("Error fetching movie data:", error);
     res.status(500).json({ message: error.message });

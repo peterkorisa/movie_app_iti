@@ -21,9 +21,13 @@
 
         {{ movie.release_date | date }}
         <!-- Watchlist Heart -->
-        <span class="heart"  (click)="watchlistService.toggleWatchlist(movie); $event.stopPropagation(); $event.preventDefault()">
-          <i class="bi h4" [ngClass]="watchlistService.isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
+        <span class="heart"
+            (click)="watchlistService.toggleWatchlist(movie.id); $event.stopPropagation(); $event.preventDefault()">
+          <i class="bi h4"
+            [ngClass]="(watchlistService.isInWatchlist(movie.id)) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'">
+          </i>
         </span>
+
       </p>
     </div>
 </div>
