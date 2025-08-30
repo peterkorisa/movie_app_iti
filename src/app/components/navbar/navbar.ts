@@ -13,7 +13,4 @@ import { AsyncPipe, NgIf } from '@angular/common';
 export class Navbar {
     constructor(public watchlistService: Watchlistservice) {}
 
-    ngOnInit() {
-      this.watchlistService.getWatchlist();
-    }
 }

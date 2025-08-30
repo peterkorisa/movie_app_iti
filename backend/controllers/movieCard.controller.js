@@ -17,7 +17,9 @@ const movieCard = async (req, res) => {
       poster_path: details.poster_path,
       title: details.title,
       release_date: details.release_date,
-      vote_average: details.vote_average
+      vote_average: details.vote_average,
+      overview: details.overview,
+      vote_count: details.vote_count
     };
 
     // Send response

@@ -1,11 +1,13 @@
-.card-custom {
-  border-radius: 1rem;
-  box-shadow: 0 4px 9px rgba(0,0,0,0.12);
+.each-movie{
+  height: 17rem;
 }
 .card-img-custom {
+  box-shadow: 0 4px 9px rgba(2,3,5,0.12);
   border-radius: 1.25rem;
-  width: 6rem;
-  height: 9rem;
+  height: 100%;
+  /* width: 25%; */
+  aspect-ratio: 9 / 16;
+  object-position: center;
   object-fit: cover;
   flex-shrink: 0;
 }
@@ -54,12 +56,12 @@ overflow: hidden;
 }
 
 img{
-  width: 120px; 
+  /* width: 120px; 
   height: 180px; 
-  object-fit: cover;
+  object-fit: cover; */
 }
 
-  .rec-card {
+.rec-card {
   position: relative;
   border: none;
   transition: transform 0.3s ease;
