@@ -12,7 +12,6 @@ const watchlistPage = async (req, res) => {
 const watchlistToggle = async (req, res) => {
   const { id } = req.params;
   
-  console.log(id);
   try {
     const existing = await Watchlist.findOne({ movieId: id });
     

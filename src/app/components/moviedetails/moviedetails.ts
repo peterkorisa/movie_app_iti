@@ -31,6 +31,10 @@ export class Moviedetails {
       }
     });
   }
+
+  toggleMovieInWatchlist(){
+    this.watchlistService.toggleWatchlist(this.movie.id);
+  }
   
   loadMovie(id: string) {
     this.movieService.getMovieDetails(id).subscribe(data => {
