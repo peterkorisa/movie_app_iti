@@ -1,0 +1,193 @@
+.movie-app {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.poster-image {
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 15px !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+}
+
+.movie-details-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.heart-btn {
+  background: none;
+  border: none;
+  color: #ddd;
+  font-size: 24px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.heart-btn.active {
+  color: #ff6b6b;
+}
+
+.heart-btn:hover {
+  color: #ff6b6b;
+}
+
+.star-rating i {
+  color: #ffc107;
+  font-size: 18px;
+  margin-right: 2px;
+}
+
+.star-rating .text-secondary {
+  color: #6c757d !important;
+}
+
+.movie-overview {
+  /* font-size: 16px; */
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.badge.bg-warning {
+  background-color: #ffc107 !important;
+  color: #212529;
+  font-weight: 500;
+}
+
+.btn-outline-dark {
+  border-color: #212529;
+  color: #212529;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-dark:hover {
+  background-color: #212529;
+  color: white;
+}
+
+.recommendations-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.rec-card {
+  position: relative;
+  border: none;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rec-card:hover {
+  transform: translateY(-5px);
+}
+
+.rec-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.score-circle {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 36px;
+  height: 36px;
+  background-color: #081c22;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.progress-circle {
+  width: 36px;
+  height: 36px;
+  transform: rotate(-90deg);
+}
+
+.circle-bg {
+  fill: none;
+  stroke-width: 2;
+  stroke: #204529;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.circle-text {
+  position: absolute;
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 1;
+}
+
+.circle-text sup {
+  font-size: 6px;
+  vertical-align: top;
+}
+
+.link-dark {
+  text-decoration: none;
+  color: inherit;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hr {
+  margin: 2rem 0;
+  color: inherit;
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+  height: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .movie-details-card {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .poster-image {
+    max-height: 400px;
+  }
+  
+  .recommendations-section {
+    padding: 20px;
+  }
+  
+  .score-circle {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .progress-circle {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .circle-text {
+    font-size: 8px;
+  }
+}
+

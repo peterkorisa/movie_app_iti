@@ -1,18 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './navbar/navbar';
-import { SearchBar } from './search-bar/search-bar';
-
-import { WatchlistCard } from './watchlist-card/watchlist-card';
-import { NoWatchlist } from './no-watchlist/no-watchlist';
-import { HttpClientModule } from '@angular/common/http';
-import { MovieCard } from './movie-card/movie-card';
+import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [ Navbar   ,HttpClientModule ,MovieCard ,WatchlistCard],
+  imports: [Navbar, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
   protected readonly title = signal('movie_app');

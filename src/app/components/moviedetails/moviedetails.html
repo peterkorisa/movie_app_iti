@@ -1,0 +1,82 @@
+<div class="movie-app">
+  <div class="container mt-4">
+    @if (movie) {
+    <div class="row">
+      <!-- Poster -->
+      <div class="col-md-4">
+        <img  [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="img-fluid rounded shadow poster-image"[alt]="movie.title"/>
+      </div>
+
+      <!-- Details -->
+      <div class="col-md-8">
+        <div class="movie-details-card h-100">
+          <div class="d-flex justify-content-between align-items-start">
+            <h2>{{ movie.title }}</h2>
+            <button class="heart-btn"  (click)="toggleMovieInWatchlist()">
+              <i class="bi" [ngClass]="watchlistService.isInWatchlist(movie.id) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'"></i>
+            </button>
+          </div>
+          
+          <p class="text-muted pb-3 mb-0">{{ movie.release_date | date }}</p>
+
+          <!-- Rating -->
+          <div class="pb-3 pt-3">
+            <span class="text-warning star-rating">
+              @for (star of stars; track $index) {
+              <i class="bi" [ngClass]="star ? 'bi-star-fill text-dark' : 'bi-star text-secondary'"></i>
+              }
+            </span>
+            <span class="ms-3">{{ movie.vote_count }}</span>
+          </div>
+
+          <!-- Overview -->
+          <p class="movie-overview h5 pb-3 pt-3 mb-0">{{ movie.overview }}</p>
+
+          <!-- Genres -->
+          <div class="pb-3 pt-3">
+            @for (genre of movie.genres; track genre.id) {
+            <h2 class="d-inline"><span class="badge rounded-pill bg-warning text-dark me-3">{{ genre.name }}</span></h2>
+            }
+          </div>
+
+          <!-- Extra info -->
+          <div class="d-flex gap-3 pt-3 pb-3">
+            <!-- Duration -->
+            <span><strong>Duration:</strong> {{ movie.runtime }} min</span>
+
+            <!-- Languages -->
+            <span><strong>Languages:</strong> {{ movie.original_language | uppercase }}</span>
+          </div>
+
+          <!-- Website -->
+           <div class="pb-3 pt-3">
+
+             @if (movie.homepage) {
+               <a [href]="movie.homepage" target="_blank" class="btn btn-outline-dark">
+                 <i class="bi bi-globe"></i> Website
+                </a>
+              }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations Section -->
+    <hr class="hr" />
+  <div class="recommendations-section mt-5">
+    <h2>Recommendations</h2>
+    <div class="row g-3 mt-3">
+        @for (rec of recommendations; track rec.id; let i = $index) { 
+          @if (i < 6) {
+            <div class="col-6 col-md-4 col-lg-2">
+              <div class="card rec-card h-100 shadow-sm">
+                <app-movie-card [movie]="rec"></app-movie-card>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+    } 
+  </div>
+</div>

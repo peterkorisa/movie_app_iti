@@ -1,0 +1,75 @@
+.each-movie{
+  height: 17rem;
+}
+.card-img-custom {
+  box-shadow: 0 4px 9px rgba(2,3,5,0.12);
+  border-radius: 1.25rem;
+  height: 100%;
+  /* width: 25%; */
+  aspect-ratio: 9 / 16;
+  object-position: center;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.heart-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+/* Outline heart */
+.bi-heart {
+  color: #555;
+}
+/* Filled heart */
+.bi-heart-fill {
+  color: #f9d71c;
+}
+.star-icon {
+  color: #000;
+  font-size: 1rem;
+  margin-right: 2px;
+}
+.star-icon.filled {
+  color: #f9d71c;
+}
+.rating-number {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #5a5a5a;
+  user-select: none;
+}
+.date-text {
+  font-size: 0.85rem;
+  color: #7a7a7a;
+  user-select: none;
+}
+.card-body-text {
+  font-size: 0.9rem;
+  color: #4a4a4a;
+}
+.text-clamp-3 {
+display: -webkit-box;
+-webkit-line-clamp: 3;   
+-webkit-box-orient: vertical;
+overflow: hidden;
+}
+
+img{
+  /* width: 120px; 
+  height: 180px; 
+  object-fit: cover; */
+}
+
+.rec-card {
+  position: relative;
+  border: none;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rec-card:hover {
+  transform: translateY(-5px);
+}

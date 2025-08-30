@@ -1,0 +1,42 @@
+<div class="container my-4">
+  <!-- Search form -->
+  <form class="d-flex mt-4" (ngSubmit)="onSubmit()">
+    <input class="form-control form-control-lg me-2"  [(ngModel)]="query" type="search" placeholder="Search and explore...."name="search"/>
+    <button class="btn btn-lg" type="submit" [disabled]="!query || query.trim().length === 0">Search</button>
+  </form>
+</div>
+
+<div class="container mt-4">
+  <!-- Results Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4>Search results for :<span class="text-warning">{{ searchedQuery }}</span></h4>
+  </div>
+  <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-4 mt-3">
+    @for (movie of movies; track movie.id) {
+      <div class="col">
+          <app-movie-card [movie]="movie"></app-movie-card>
+      </div>
+    }
+  </div>
+     <!-- Pagination -->
+    @if(page && totalPages > 0) {
+    <div class="d-flex justify-content-center mt-4">
+        <pagination 
+          [totalItems]="totalPages * pageSize"
+          [(ngModel)]="page"
+          [itemsPerPage]="pageSize"
+          (pageChanged)="onPageChange($event.page)"
+          [maxSize]="5"
+          [rotate]="false"
+          [boundaryLinks]="false"
+          previousText="&lsaquo;" 
+          nextText="&rsaquo;" 
+          firstText="&laquo;" 
+          lastText="&raquo;" 
+          class="custom-pagination"
+          aria-label="Movie pagination">
+        </pagination>
+
+  </div>
+  }
+</div>

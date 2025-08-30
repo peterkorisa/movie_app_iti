@@ -1,0 +1,33 @@
+<div class="card movie-card rec-card shadow-sm h-100 clickable" [routerLink]="['/movie', movie.id]">
+  <!-- Poster -->
+    <div class="position-relative clickable" >
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top rounded-top" alt="{{ movie.title }}"/>
+      <!-- Rating Circle -->
+      <div class="score-circle">
+        <svg class="progress-circle" viewBox="0 0 36 36">
+          <path class="circle-bg" [ngStyle]="movie.vote_average > 7 ? {'stroke': '#21cd78'}:{'stroke': '#b5b82c'}" 
+                d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831"/>
+          <path class="circle" [ngStyle]="movie.vote_average > 7 ? {'stroke': '#21cd78'}:{'stroke': '#b5b82c'}"
+                [attr.stroke-dasharray]="movie.vote_average * 10 + ', 100'"
+                d="M18 2.0845a 15.9155 15.9155 0 0 1 0 31.831a 15.9155 15.9155 0 0 1 0 -31.831"/>
+        </svg>
+        <div class="circle-text">{{ movie.vote_average * 10 | number : "1.0-0" }}<sup>%</sup></div>
+      </div>
+    </div>    
+    <!-- Card Body -->
+    <div class="card-body">
+      <h6 class="fw-bold mb-1 text-truncate lead">{{ movie.title }}</h6>
+      <p class="text-muted mb-2 d-flex flex-row justify-content-between">
+
+        {{ movie.release_date | date }}
+        <!-- Watchlist Heart -->
+        <span class="heart"
+            (click)="toggleWatchlist(); $event.stopPropagation(); $event.preventDefault()">
+          <i class="bi h4"
+            [ngClass]="(watchlistService.isInWatchlist(movie.id)) ? 'bi-heart-fill text-warning' : 'bi-heart text-secondary'">
+          </i>
+        </span>
+
+      </p>
+    </div>
+</div>
