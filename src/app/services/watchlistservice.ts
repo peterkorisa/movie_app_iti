@@ -12,7 +12,7 @@ export class Watchlistservice {
 
   // Reactive watchlist state
   private _watchlistIds = new BehaviorSubject<any[]>([]);
-  watchlist$ = this._watchlistIds.asObservable();
+  watchlistIds$ = this._watchlistIds.asObservable();
 
   constructor(
     private http: HttpClient
@@ -20,75 +20,44 @@ export class Watchlistservice {
     this.getWatchlistIds();
   }
 
+
   getMovieById(id: string) {
     return this.http.get<any>(`${this.apiUrl}/movie/card/${id}`);
   }
 
+
   getWatchlistIds() {
-    
     this.http.get<any[]>(`${this.apiUrl}/watchlist`).subscribe({
       next: (data) => this._watchlistIds.next(data),
       error: (err) => console.error("Failed to fetch watchlist:", err)
     });
   }
 
-  // async fetchWatchlistMovie(): Promise<any[]> {
-  //   const ids = this._watchlistIds.value;
-  //   console.log(ids);
-
-  //   if (!ids.length) return [];
-
-  //   try {
-  //     const movies = await Promise.all(
-  //       ids.map(id =>
-  //         import('rxjs').then(rxjs =>
-  //           rxjs.firstValueFrom(this.http.get<any>(`${this.apiUrl}/movie/card/${id}`))
-  //         )
-  //       )
-  //     );
-  //     this._watchlistIds.next(movies);
-  //     return movies;
-  //   } catch (err) {
-  //     console.error("Failed to fetch watchlist details:", err);
-  //     return [];
-  //   }
-  // }
-
-  // getWatchlist() {
-  //   const respond = this.http.get<any>(`${this.apiUrl}/watchlist`);
-  //   respond.subscribe({
-  //     next: (data: any) => {
-        
-  //       for(const id in data){
-          
-  //         const movie_respond = this.http.get<any>(`${this.apiUrl}/movie/card/${id}`);
-  //         movie_respond.subscribe({
-  //           next: (movieData: any) => {
-        
-  //             this.watchlist.push(movieData);
-  //           }
-  //         });
-  //       }
-  //     }
-  //   });
-  // }
-
 
   addMovie(movieId: string) {
+
+    movieId = String(movieId);
     const current = this._watchlistIds.value;
+
     if (!current.find(m => m === movieId)) {
       this._watchlistIds.next([...current, movieId]);
     }
   }
+  
 
   removeMovie(movieId: string) {
+    movieId = String(movieId);
     const current = this._watchlistIds.value;
-    this._watchlistIds.next(current.filter(m => m !== movieId));
+    
+    if (current.includes(movieId)) {
+      this._watchlistIds.next(current.filter(m => m !== movieId));
+    }
   }
 
+
   isInWatchlist(movieId: string): boolean {
-    console.log(movieId);
-    console.log(this._watchlistIds.value.some(m => m == movieId));
+    
+    movieId = String(movieId);
 
     return this._watchlistIds.value.some(m => m == movieId);
   }

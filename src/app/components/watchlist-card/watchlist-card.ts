@@ -15,7 +15,7 @@ export class WatchlistCard {
 
   constructor(public watchlistService: Watchlistservice) {
     // Subscribe to watchlist IDs
-    this.watchlistService.watchlist$.subscribe(async ids => {
+    this.watchlistService.watchlistIds$.subscribe(async ids => {
       if (!ids || !ids.length) {
         this.movies = [];
         return;
@@ -40,6 +40,10 @@ export class WatchlistCard {
       console.error('Failed to fetch movie details:', err);
       return [];
     }
+  }
+
+  removeMovie(id: string){
+    this.watchlistService.toggleWatchlist(id);
   }
 
   getStars(vote_average: number): boolean[] {

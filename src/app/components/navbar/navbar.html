@@ -22,8 +22,7 @@
               </h5>
               <span class="badge bg-light text-white rounded-square position-absolute top-0 start-100 translate-top-y" style="font-size: 1rem; width: 1.8rem; height: 1.8rem; line-height: 1.2rem;">
                 <p class = "text-dark">
-                  {{ (watchlistService.watchlist$ | async)?.length || 0  }}
-
+                  {{ (watchlistService.watchlistIds$ | async)?.length || 0  }}
                 </p>
               </span>
             </span>

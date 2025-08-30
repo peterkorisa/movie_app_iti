@@ -18,7 +18,7 @@
                 </div>
 
                 <!-- Heart button -->
-                <button class="btn btn-link p-0" (click)="watchlistService.toggleWatchlist(movie.id); $event.stopPropagation(); $event.preventDefault()">
+                <button class="btn btn-link p-0" (click)="removeMovie(movie.id); $event.stopPropagation(); $event.preventDefault()">
                   <i class="bi bi-heart-fill text-warning fs-5"></i>
                 </button>
               </div>
