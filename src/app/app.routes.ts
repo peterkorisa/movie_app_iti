@@ -11,6 +11,6 @@ export const routes: Routes = [
   { path: 'search/:query', component: SearchBar },
   { path: 'watchlist', component: WatchlistCard },
   { path: 'movie/:id', component: Moviedetails },
-  { path: '', redirectTo: 'movielist/1', pathMatch: 'full' },
+  { path: '', redirectTo: 'movielist/', pathMatch: 'full' },
   { path: '**', redirectTo: '' }
 ];
