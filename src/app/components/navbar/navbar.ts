@@ -8,7 +8,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
   selector: 'app-navbar',
   imports: [RouterLink, AsyncPipe],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  styleUrl: './navbar.css',
 })
 export class Navbar {
     constructor(public watchlistService: Watchlistservice) {}
